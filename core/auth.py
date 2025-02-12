@@ -40,12 +40,13 @@ class AuthJWT:
         """Membuat JWT token untuk pengguna"""
         payload = {
             "user_id": user["user_id"],
+            "user_nip": user["user_nip"],
             "user_name": user["user_name"],
             "user_role": user["role_id"],
             "user_department": user["department_id"],
             "user_email": user["user_email"],
             "user_fullname": user["user_fullname"],
-            "user_number": user["user_number"],
+            "user_phone": user["user_phone"],
             "created_by": user["created_by"],
             "exp": datetime.datetime.now() + datetime.timedelta(hours=ACCESS_TOKEN_EXPIRE_HOURS),
         }

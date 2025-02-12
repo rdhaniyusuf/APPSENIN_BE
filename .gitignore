@@ -2,3 +2,14 @@
 .env*
 
 /.dump/.env
+
+/env
+
+*__pycache__/
+
+/api/v1/controllers/__pycache__/
+models/__pycache__/
+*.pyc
+
+../api/v1/controllers/__pycache__/account_controller.cpython-312.pyc
+api/v1/controllers/__pycache__/account_controller.cpython-312.pyc

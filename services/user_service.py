@@ -15,10 +15,11 @@ async def get_user_service(db: AsyncSession):
         for user in users:
             user_data = {
                 "user_id": user.user_id,
+                "user_nip": user.user_nip,
                 "user_name": user.user_name,
                 "user_email": user.user_email,
                 "user_fullname": user.user_fullname,
-                "user_number": user.user_number,
+                "user_phone": user.user_phone,
                 "created_by": user.created_by,
                 "created_at": user.created_at.isoformat(),
                 "modified_by": user.modified_by,
@@ -76,12 +77,13 @@ async def login_user_service(db: AsyncSession, user_name: str, user_pass: str):
     # Data user untuk dikembalikan & dimasukkan ke JWT
     user_data = {
         "user_id": user.user_id,
-        "role_id": role,  # role sudah integer
-        "department_id": department,  # department sudah integer
+        "user_nip": user.user_nip,
+        "role_id": role,
+        "department_id": department,
         "user_name": user.user_name,
         "user_email": user.user_email,
         "user_fullname": user.user_fullname,
-        "user_number": user.user_number,
+        "user_phone": user.user_phone,
         "created_by": user.created_by,
         "created_at": user.created_at.isoformat(),
         "modified_by": user.modified_by,

@@ -5,17 +5,17 @@ from sqlalchemy.sql import func
 from core.database import Base
 import datetime
 import sys
-
 sys.dont_write_bytecode = True
 
 class UserModel(Base):
     __tablename__ = "at_sys_msuser"
     user_id = Column(Integer, primary_key=True, autoincrement=True)
+    user_nip = Column(String, nullable=False)
     user_name = Column(String, nullable=False, unique=True)
     user_fullname = Column(String, nullable=False)
     user_pass = Column(String, nullable=False)
     user_email = Column(String, nullable=False, unique=True)
-    user_number = Column(String, nullable=False, unique=True)
+    user_phone = Column(String, nullable=False)
     user_image = Column(LargeBinary, nullable=True)
     created_by = Column(Integer, nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.now())

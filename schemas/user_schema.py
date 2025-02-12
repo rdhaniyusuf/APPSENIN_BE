@@ -5,11 +5,12 @@ sys.dont_write_bytecode = True
 
 class UserSchema(BaseModel):
     user_id: Optional[int]
+    user_nip: str
     user_name: str
     user_pass: str
     user_fullname: str
     user_email: EmailStr
-    user_number:str
+    user_phone:str
     created_by:int
     created_at:str
     modified_by:int
@@ -18,10 +19,11 @@ class UserSchema(BaseModel):
     
 class UsersSchema(BaseModel):
     user_id: Optional[int]
+    user_nip: str 
     user_name: str
     user_fullname: str
     user_email: EmailStr
-    user_number:str
+    user_phone:str
     created_by:int
     created_at:str
     modified_by:int
@@ -30,11 +32,12 @@ class UsersSchema(BaseModel):
 
 class UserCreateSchema(BaseModel):
     user_id: Optional[int]
+    user_nip: str
     user_name: str
     user_pass: str
     user_fullname: str
     user_email: EmailStr
-    user_number:str
+    user_phone:str
     created_by:int
     created_at:str
     modified_by:int
