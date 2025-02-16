@@ -10,7 +10,7 @@ from services.user_service import create_user_service, get_user_service, login_u
 from core.auth import AuthJWT
 
 router = APIRouter()
-@router.get("/", response_model=List[UsersSchema])
+@router.get("/all", response_model=List[UsersSchema])
 async def list_users(db: AsyncSession = Depends(get_db)):
     users = await get_user_service(db)
     if not users:
@@ -22,14 +22,6 @@ async def list_users(db: AsyncSession = Depends(get_db)):
 async def register_user_controller(user: UserCreateSchema, db: AsyncSession = Depends(get_db)):
     return await create_user_service(db, user)
 
-# Endpoint untuk login user
-# @router.post("/login")
-# async def login_user_controller(user: UserLoginSchema, db: AsyncSession = Depends(get_db)):
-#     user_data = await login_user_service(db, user.user_name, user.user_pass)
-
-#     if "error" in user_data:
-#         raise HTTPException(status_code=401, detail=user_data["error"])
-#     return {"message": "Login successful", "user": user_data, "valid": True}
 
 @router.post("/login")
 async def login_user_controller(user: UserLoginSchema, db: AsyncSession = Depends(get_db)):
@@ -53,3 +45,12 @@ async def get_profile(user: dict = Depends(AuthJWT.get_current_user)):
 @router.get("/role")
 async def get_role():
     return {"message": "Role User", "role": "Admin"}
+
+@router.get("/me")
+async def get_me(user: dict = Depends(AuthJWT.get_current_user)):
+    return {"message": "Success", "user": user}
+
+@router.get("/login_ioffice")
+async def login_ioffice():
+    return {"message": "Login iOffice Success"}
+

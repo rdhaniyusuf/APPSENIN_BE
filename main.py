@@ -18,9 +18,9 @@ app.add_middleware(
 
 app.include_router(routes.router)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+# @app.get("/")
+# def read_root():
+#     return {"Hello": "World"}
 
 # client = TestClient(app, base_url="http://127.0..0.1:5000")
 
